@@ -10,7 +10,7 @@ async function carregarDados() {
 
   try {
     // 1. Tenta buscar os dados
-    const response = await fetch('./data/precos.json');
+    const response = await fetch('./precos.json');
     if (!response.ok) {
       throw new Error(`Erro HTTP: ${response.status}`);
     }
