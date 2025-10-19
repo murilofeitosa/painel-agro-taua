@@ -1,44 +1,98 @@
 body {
-  font-family: Arial, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
   background: #f3f4f6;
   margin: 0;
   padding: 0;
-  text-align: center;
+  color: #333;
 }
 
 header {
-  background: #16a34a;
+  background: #16a34a; /* Verde mais vibrante */
   color: white;
-  padding: 20px 0;
+  padding: 20px 10px;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 h1 {
   margin: 0;
+  font-size: 2rem; /* Tamanho maior */
+}
+
+header p {
+  margin: 5px 0 0;
+  font-size: 1rem;
+  opacity: 0.9;
 }
 
 .painel {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  margin: 20px;
-  gap: 15px;
+  margin: 20px auto;
+  padding: 0 10px;
+  gap: 20px; /* Espaçamento maior */
+  max-width: 1200px;
 }
 
 .card {
   background: white;
-  border-radius: 10px;
-  padding: 20px;
-  min-width: 150px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  padding: 25px;
+  min-width: 200px; /* Um pouco maior */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  text-align: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
 }
 
 .card h2 {
+  margin-top: 0;
   margin-bottom: 10px;
-  color: #15803d;
+  color: #15803d; /* Verde escuro */
+  font-size: 1.25rem;
+}
+
+/* Novo: Estilo para o preço/valor principal */
+.card .preco {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #111827;
+  margin: 10px 0;
+}
+
+/* Novo: Estilo para a informação extra */
+.card .info {
+  font-size: 0.9rem;
+  color: #6b7280;
+  margin: 0;
+}
+
+/* Novo: Estilos para mensagens de status */
+.status-message {
+  width: 100%;
+  text-align: center;
+  font-size: 1.2rem;
+  color: #555;
+  padding: 40px;
+}
+
+.status-message.error {
+  color: #b91c1c; /* Vermelho */
+  background: #fee2e2;
+  border: 1px solid #fca5a5;
+  border-radius: 8px;
 }
 
 footer {
   background: #e5e7eb;
-  padding: 10px 0;
-  margin-top: 20px;
+  padding: 20px 0;
+  margin-top: 30px;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #4b5563;
 }
