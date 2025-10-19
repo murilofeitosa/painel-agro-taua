@@ -9,8 +9,10 @@ async function carregarDados() {
   const error = document.getElementById("error");
 
   try {
-    // 1. Tenta buscar os dados
+    // 1. Tenta buscar os dados.
+    // O CAMINHO FOI CORRIGIDO AQUI para buscar na raiz.
     const response = await fetch('./precos.json');
+    
     if (!response.ok) {
       throw new Error(`Erro HTTP: ${response.status}`);
     }
@@ -32,17 +34,25 @@ async function carregarDados() {
       // Formata o valor
       let valorFormatado = "";
       if (item.unidade === "R$") {
-        valorFormatado = `R$ ${item.valor.toFixed(2)}`;
+        // Converte para o formato de moeda BRL
+        valorFormatado = item.valor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
       } else {
         valorFormatado = item.valor; // Para o clima, etc.
       }
 
       // Monta o HTML interno do card
+      // (Ajuste no valorFormatado para remover o "R$" duplicado, pois toLocaleString já inclui)
       card.innerHTML = `
         <h2>${item.nome}</h2>
         <p class="preco">${valorFormatado}</p>
         <p class="info">${item.info}</p>
       `;
+      
+      // Se a unidade não for 'R$', precisamos ajustar a exibição
+      if (item.unidade !== "R$") {
+         card.querySelector('.preco').innerHTML = valorFormatado;
+      }
+
 
       // Adiciona o card criado ao painel
       painel.appendChild(card);
@@ -59,6 +69,10 @@ async function carregarDados() {
 // Função auxiliar para formatar a data (opcional)
 function formatarData(dataISO) {
   // Converte "2025-10-19" para "19/10/2025"
-  const [ano, mes, dia] = dataISO.split('-');
-  return `${dia}/${mes}/${ano}`;
+  try {
+    const [ano, mes, dia] = dataISO.split('-');
+    return `${dia}/${mes}/${ano}`;
+  } catch (e) {
+    return dataISO; // Retorna a data original se o formato for inesperado
+  }
 }
