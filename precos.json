@@ -24,18 +24,11 @@
       "info": "Saco de 25kg"
     },
     {
-      "id": "racao",
-      "nome": "Ração 🌽",
-      "valor": 3.20,
-      "unidade": "R$",
-      "info": "Preço por Kg"
-    },
-    {
       "id": "clima",
       "nome": "Clima Agora ☀️",
-      "valor": "34 °C",
+      "valor": "42 °C",
       "unidade": "",
-      "info": "Parcialmente nublado"
+      "info": "Mormaço"
     }
   ]
 }
