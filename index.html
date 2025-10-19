@@ -5,38 +5,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Painel Agro Tauá</title>
   <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌿</text></svg>">
 </head>
 <body>
   <header>
     <h1>🌿 Painel Agro Tauá</h1>
-    <p>Atualizado em: <span id="data"></span></p>
+    <p>Atualizado em: <span id="data-atualizacao">--/--/----</span></p>
   </header>
 
-  <section class="painel">
-    <div class="card">
-      <h2>Ovinos</h2>
-      <p>R$ <span id="ovinos"></span></p>
+  <section id="painel" class="painel">
+    <div id="loading" class="status-message">
+      <p>Carregando dados...</p>
     </div>
-    <div class="card">
-      <h2>Caprinos</h2>
-      <p>R$ <span id="caprinos"></span></p>
-    </div>
-    <div class="card">
-      <h2>Sal Mineral</h2>
-      <p>R$ <span id="salMineral"></span></p>
-    </div>
-    <div class="card">
-      <h2>Ração</h2>
-      <p>R$ <span id="racao"></span></p>
-    </div>
-    <div class="card clima">
-      <h2>Clima</h2>
-      <p><span id="clima"></span></p>
+
+    <div id="error" class="status-message error" style="display: none;">
+      <p>Falha ao carregar os dados. Tente novamente mais tarde.</p>
     </div>
   </section>
 
   <footer>
-    <p>📍 Dados da região de Tauá | Atualização manual</p>
+    <p>📍 Dados da região de <span id="local">...</span> | Atualização manual</p>
   </footer>
 
   <script src="scripts/main.js"></script>
