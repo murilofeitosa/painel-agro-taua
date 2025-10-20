@@ -7,7 +7,7 @@ body {
 }
 
 header {
-  background: #16a34a; /* Verde mais vibrante */
+  background: #16a34a;
   color: white;
   padding: 20px 10px;
   text-align: center;
@@ -16,7 +16,7 @@ header {
 
 h1 {
   margin: 0;
-  font-size: 2rem; /* Tamanho maior */
+  font-size: 2rem;
 }
 
 header p {
@@ -25,13 +25,15 @@ header p {
   opacity: 0.9;
 }
 
+/* --- MELHORIA: Layout em Grid --- */
 .painel {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  display: grid; /* MUDADO DE FLEX PARA GRID */
+  /* Cria colunas responsivas: tenta encaixar cards de 200px, 
+     e estica eles para preencher o espaço (1fr) */
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   margin: 20px auto;
   padding: 0 10px;
-  gap: 20px; /* Espaçamento maior */
+  gap: 20px;
   max-width: 1200px;
 }
 
@@ -39,7 +41,6 @@ header p {
   background: white;
   border-radius: 12px;
   padding: 25px;
-  min-width: 200px; /* Um pouco maior */
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
   text-align: center;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
@@ -53,36 +54,81 @@ header p {
 .card h2 {
   margin-top: 0;
   margin-bottom: 10px;
-  color: #15803d; /* Verde escuro */
+  color: #15803d;
   font-size: 1.25rem;
 }
 
-/* Novo: Estilo para o preço/valor principal */
 .card .preco {
   font-size: 2.5rem;
   font-weight: bold;
   color: #111827;
   margin: 10px 0;
+  /* Alinha a seta de variação com o preço */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
 }
 
-/* Novo: Estilo para a informação extra */
 .card .info {
   font-size: 0.9rem;
   color: #6b7280;
   margin: 0;
 }
 
-/* Novo: Estilos para mensagens de status */
+/* --- MELHORIA: Estilos da Variação (Seta) --- */
+.variacao {
+  font-size: 1.5rem; /* Tamanho da seta/traço */
+  font-weight: bold;
+}
+.variacao.alta {
+  color: #16a34a; /* Verde */
+}
+.variacao.baixa {
+  color: #dc2626; /* Vermelho */
+}
+.variacao.neutra {
+  color: #6b7280; /* Cinza */
+  font-size: 1rem; /* O traço fica melhor menor */
+}
+
+/* --- MELHORIA: Destaque Card de Clima --- */
+.card-clima {
+  /* Faz o card ocupar todas as colunas disponíveis */
+  grid-column: 1 / -1; 
+  
+  /* Layout interno diferente */
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+/* No mobile, o grid já fica 1 coluna, então ajustamos o clima */
+@media (min-width: 640px) {
+  .card-clima {
+    display: flex; /* Só ativa o flex em telas maiores */
+  }
+  .card-clima h2 {
+    margin: 0;
+  }
+  .card-clima .preco {
+    font-size: 3rem;
+    margin: 0;
+  }
+}
+
+/* --- Status (Loading/Erro) --- */
 .status-message {
   width: 100%;
   text-align: center;
   font-size: 1.2rem;
   color: #555;
   padding: 40px;
+  /* Faz ocupar a linha inteira do grid */
+  grid-column: 1 / -1; 
 }
 
 .status-message.error {
-  color: #b91c1c; /* Vermelho */
+  color: #b91c1c;
   background: #fee2e2;
   border: 1px solid #fca5a5;
   border-radius: 8px;
@@ -95,4 +141,53 @@ footer {
   text-align: center;
   font-size: 0.9rem;
   color: #4b5563;
+}
+
+/* --- MELHORIA: Estilos do Modal --- */
+footer a {
+  color: #15803d;
+  font-weight: bold;
+  text-decoration: none;
+  cursor: pointer;
+}
+footer a:hover {
+  text-decoration: underline;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 15px;
+  box-sizing: border-box; /* Garante que o padding não estoure a tela */
+}
+
+.modal-conteudo {
+  background: white;
+  padding: 25px;
+  border-radius: 10px;
+  max-width: 500px;
+  width: 100%;
+  position: relative;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  line-height: 1.6;
+}
+
+.modal-fechar {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 2rem;
+  cursor: pointer;
+  color: #999;
+}
+.modal-fechar:hover {
+  color: #333;
 }
