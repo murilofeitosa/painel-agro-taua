@@ -1,11 +1,12 @@
 {
-  "dataAtualizacao": "2025-10-19",
+  "dataAtualizacao": "2025-10-20",
   "local": "Tauá",
   "itens": [
     {
       "id": "ovinos",
       "nome": "Ovinos 🐑",
-      "valor": 18.00,
+      "valor": 18.20,
+      "valorAnterior": 18.00,
       "unidade": "R$",
       "info": "Preço por Kg/vivo"
     },
@@ -13,22 +14,33 @@
       "id": "caprinos",
       "nome": "Caprinos 🐐",
       "valor": 17.50,
+      "valorAnterior": 17.50,
       "unidade": "R$",
       "info": "Preço por Kg/vivo"
     },
     {
       "id": "salMineral",
       "nome": "Sal Mineral 🧂",
-      "valor": 80.00,
+      "valor": 79.00,
+      "valorAnterior": 80.00,
       "unidade": "R$",
       "info": "Saco de 25kg"
     },
     {
+      "id": "racao",
+      "nome": "Ração 🌽",
+      "valor": 3.20,
+      "valorAnterior": 3.20,
+      "unidade": "R$",
+      "info": "Preço por Kg"
+    },
+    {
       "id": "clima",
       "nome": "Clima Agora ☀️",
-      "valor": "42 °C",
+      "valor": "32 °C",
+      "valorAnterior": null,
       "unidade": "",
-      "info": "Mormaço"
+      "info": "Céu limpo"
     }
   ]
 }
